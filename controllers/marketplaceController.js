@@ -36,22 +36,21 @@ exports.getSingleMarketplace = catchAsyncErrors(async (req, res, next) => {
     if (!marketplace) {
       return next(new ErrorHandler('Marketplace not found', 404));
     }
-   console.log(',ssss',marketplace?.identifier)
-    req.session.identifier = marketplace?.identifier;  
-    // Spawning a new process for marketplaceServer
-    const marketplaceServer = spawn('node', ['marketplaceServer.js', currentPort], {
-      stdio: 'inherit',
-    });
+    // req.session.identifier = marketplace?.identifier;  
+    // // Spawning a new process for marketplaceServer
+    // const marketplaceServer = spawn('node', ['marketplaceServer.js', currentPort], {
+    //   stdio: 'inherit',
+    // });
   
-    marketplaceServer.on('error', (error) => {
-      console.error(`Error: ${error.message}`);
-    });
+    // marketplaceServer.on('error', (error) => {
+    //   console.error(`Error: ${error.message}`);
+    // });
   
     // Respond with marketplace and confirmation of the server spawn
     res.status(200).json({
       success: true,
       marketplace,
-      message: `Marketplace server started on port ${currentPort}`,
+    //   message: `Marketplace server started on port ${currentPort}`,
     });
   });
   

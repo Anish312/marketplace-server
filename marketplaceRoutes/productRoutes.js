@@ -5,7 +5,7 @@ const { createProduct, getAllProducts, updateProduct, getProductById } = require
 const router = express.Router();
 
 router.route("/product").post(  isAuthenticatedUser, createProduct)
-router.route("/products").get(isAuthenticatedUser ,authorizeUserType('supplier', 'buyer'), getAllProducts  )
+router.route("/products").get( getAllProducts  )
 router.route("/product/:id").put(isAuthenticatedUser ,updateProduct)
 
 
